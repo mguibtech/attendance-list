@@ -21,10 +21,12 @@ export function Home() {
   }
 
   function handleRemoveParticipant(name: string) {
+    // return console.log(participants.filter(participant => participant !== name))   
+
     Alert.alert("Remover", `Deseja remover o participante ${name}?`, [
       {
         text: 'Sim',
-        onPress: () => Alert.alert("Deletado!")
+        onPress: () => setParticipants(preveState => preveState.filter(participant => participant !== name))
       },
       {
         text: 'Nao',
@@ -65,14 +67,6 @@ export function Home() {
           <Text style={styles.listEmptyText}>Ninguem chegou ao evento ainda? Adicione partipantes a lista</Text>
         )}
       />
-      {/* <ScrollView showsVerticalScrollIndicator={false}>
-        {
-          participants.map(particpant => (
-            <Particpant key={particpant} name={particpant} onRemove={() => handleRemoveParticipant("Guib")} />
-          ))
-        }
-      </ScrollView> */}
-
     </View>
   )
 }
