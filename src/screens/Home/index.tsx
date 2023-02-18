@@ -1,10 +1,9 @@
 import { Text, TextInput, View, TouchableOpacity } from "react-native";
+import { Particpant } from "../../components/Participant";
 
 import { styles } from "./styles";
 
 export function Home() {
-
-
 
   function handleParticipandAdd() {
     console.log("Foi clicado no botão")
@@ -27,6 +26,9 @@ export function Home() {
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
+
+      <Particpant/>
+      <Particpant/>
     </View>
   )
 }
