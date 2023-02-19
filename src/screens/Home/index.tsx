@@ -8,14 +8,17 @@ export function Home() {
   const [participants, setParticipants] = useState<string[]>([]);
   const [participantName, setPartcipantName] = useState('')
 
-  // const participants = ['Guib', 'Castor', 'BugBosa', 'Ana', 'Patatiza', 'LeoConha', 'Maria', 'Chefinha', 'Harry Potter', 'Draco']
+  const getCurrentDate = () => {
+    var date = new Date().toLocaleString();
+    return date
+  }
 
   function handleParticipandAdd() {
-    if(participants.includes(participantName)){
+    if (participants.includes(participantName)) {
       return Alert.alert("Alerta", "Participante já existe!")
       setPartcipantName('')
     }
-    
+
     setParticipants(prevState => [...prevState, participantName])
     setPartcipantName('')
   }
@@ -38,8 +41,8 @@ export function Home() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.eventName}>Nome do evento</Text>
-      <Text style={styles.eventDate}>Sexta, 4 de Novembro de 2022</Text>
+      <Text style={styles.eventName}>Event Name</Text>
+      <Text style={styles.eventDate}>{getCurrentDate()}</Text>
 
       <View style={styles.form}>
         <TextInput
@@ -59,12 +62,12 @@ export function Home() {
       <FlatList
         data={participants}
         keyExtractor={item => item}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <Particpant name={item} onRemove={() => handleRemoveParticipant(item)} />
         )}
-        showsVerticalScrollIndicator = {false}
+        showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
-          <Text style={styles.listEmptyText}>Ninguem chegou ao evento ainda? Adicione partipantes a lista</Text>
+          <Text style={styles.listEmptyText}>Has anyone made it to the event yet? Add participants to list.</Text>
         )}
       />
     </View>
